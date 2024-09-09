@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { FC, JSX } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+export const ReactApp: React.FC = () => {
+  return <div>Redev</div>;
+};
 
+export const ReactFC: FC = () => {
+  return <div>Redev</div>;
+};
+
+export const ReactJSX = (): JSX.Element => {
+  return <div>Redev</div>;
+};
+
+//////////////////////////////////////////////////////
+//React.FC and Props
+//////////////////////////////////////////////////////
+
+export const ParentComponent: React.FC = () => {
+  return <ChildComponent name="Kostya" age={24} isMan={true} />;
+};
+
+type PropsType = {
+  name: string;
+  age: number;
+  isMan: boolean;
+};
+
+export const ChildComponent: React.FC<PropsType> = ({ name, age, isMan }) => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{isMan}</p>
     </>
-  )
-}
+  );
+};
 
-export default App
+//////////////////////////////////////////////////////
+// Object type
+//////////////////////////////////////////////////////
+
+export type FormValuesType = {
+  email: string;
+  password: number;
+  remeberMe: boolean;
+};
+
+export const Parents: React.FC = () => {
+  const formValues: FormValuesType = {
+    email: "tugay-k@mail.ru",
+    password: 123241234,
+    remeberMe: true,
+  };
+
+  return <Childs formData={formValues} />;
+};
+
+type PropsTypes = {
+  formData: FormValuesType;
+};
+
+export const Childs: React.FC<PropsTypes> = ({ formData }) => {
+  return (
+    <>
+      <p>{formData.email}</p>
+      <p>{formData.password}</p>
+      <p>{formData.remeberMe}</p>
+    </>
+  );
+};
