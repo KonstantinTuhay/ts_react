@@ -127,7 +127,7 @@ export type Students = {
   isMan: boolean;
 };
 
-export const ParentComponent1 = () => {
+export const ParentComponent1: React.FC = () => {
   const students: Students[] = [
     { id: 1, name: "Vasya", age: 18, isMan: true },
     { id: 2, name: "Petya", age: 38, isMan: true },
@@ -151,6 +151,58 @@ export const ChildComponent1: React.FC<PropsType1> = ({
   students,
   showStudentName,
 }) => {
+  const onClickHandler = (studentName: string) => showStudentName(studentName);
+
+  return (
+    <>
+      {students.map((student) => {
+        return (
+          <div key={student.id} onClick={() => onClickHandler(student.name)}>
+            <p>{student.name}</p>
+            <p>{student.age}</p>
+            <p>{student.isMan}</p>
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
+//////////////////////////////////////////////////////
+// last example with JSX.Element
+//////////////////////////////////////////////////////
+
+export type Students1 = {
+  id: number;
+  name: string;
+  age: number;
+  isMan: boolean;
+};
+
+export const ParentComponent2 = (): JSX.Element => {
+  const students: Students1[] = [
+    { id: 1, name: "Vasya", age: 18, isMan: true },
+    { id: 2, name: "Petya", age: 38, isMan: true },
+    { id: 3, name: "Masha", age: 25, isMan: false },
+    { id: 4, name: "Valentina", age: 30, isMan: false },
+  ];
+
+  const showStudentName = (name: string): void => console.log(name);
+
+  return (
+    <ChildComponent2 students={students} showStudentName={showStudentName} />
+  );
+};
+
+type PropsType2 = {
+  students: Students[];
+  showStudentName: (name: string) => void;
+};
+
+export const ChildComponent2 = ({
+  students,
+  showStudentName,
+}: PropsType2): JSX.Element => {
   const onClickHandler = (studentName: string) => showStudentName(studentName);
 
   return (
