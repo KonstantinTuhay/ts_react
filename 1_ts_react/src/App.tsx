@@ -69,3 +69,49 @@ export const Childs: React.FC<PropsTypes> = ({ formData }) => {
     </>
   );
 };
+
+//////////////////////////////////////////////////////
+// Array type
+//////////////////////////////////////////////////////
+
+export type StudentType = {
+  id: number;
+  name: string;
+  age: number;
+  isMan: boolean;
+};
+
+export const ParentsComponents: React.FC = () => {
+  const students: StudentType[] = [
+    { id: 1, name: "Vasya", age: 18, isMan: true },
+    { id: 2, name: "Petya", age: 38, isMan: true },
+    { id: 3, name: "Masha", age: 25, isMan: false },
+    { id: 4, name: "Valentina", age: 30, isMan: false },
+  ];
+
+  return (
+    <>
+      <ChildsComponents students={students} />
+    </>
+  );
+};
+
+type PropsTyp = {
+  students: StudentType[];
+};
+
+export const ChildsComponents: React.FC<PropsTyp> = ({ students }) => {
+  return (
+    <>
+      {students.map((student) => {
+        return (
+          <div key={crypto.randomUUID()}>
+            <p>{student.name}</p>
+            <p>{student.age}</p>
+            <p>{student.isMan}</p>
+          </div>
+        );
+      })}
+    </>
+  );
+};
