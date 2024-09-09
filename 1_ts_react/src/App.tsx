@@ -115,3 +115,55 @@ export const ChildsComponents: React.FC<PropsTyp> = ({ students }) => {
     </>
   );
 };
+
+//////////////////////////////////////////////////////
+// callback type
+//////////////////////////////////////////////////////
+
+export type Students = {
+  id: number;
+  name: string;
+  age: number;
+  isMan: boolean;
+};
+
+export const ParentComponent1 = () => {
+  const students: Students[] = [
+    { id: 1, name: "Vasya", age: 18, isMan: true },
+    { id: 2, name: "Petya", age: 38, isMan: true },
+    { id: 3, name: "Masha", age: 25, isMan: false },
+    { id: 4, name: "Valentina", age: 30, isMan: false },
+  ];
+
+  const showStudentName = (name: string): void => console.log(name);
+
+  return (
+    <ChildComponent1 students={students} showStudentName={showStudentName} />
+  );
+};
+
+type PropsType1 = {
+  students: Students[];
+  showStudentName: (name: string) => void;
+};
+
+export const ChildComponent1: React.FC<PropsType1> = ({
+  students,
+  showStudentName,
+}) => {
+  const onClickHandler = (studentName: string) => showStudentName(studentName);
+
+  return (
+    <>
+      {students.map((student) => {
+        return (
+          <div key={student.id} onClick={() => onClickHandler(student.name)}>
+            <p>{student.name}</p>
+            <p>{student.age}</p>
+            <p>{student.isMan}</p>
+          </div>
+        );
+      })}
+    </>
+  );
+};
