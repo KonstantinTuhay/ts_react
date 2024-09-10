@@ -245,3 +245,23 @@
 //////////////////////////////////////////////////////
 // 1. TASK
 //////////////////////////////////////////////////////
+
+import { JSX } from "react";
+
+export const ParentComponent = (): JSX.Element => {
+  const name: string = "Kostya";
+
+  return <SimpleComponent name={name} />;
+};
+
+// import {ParentComponent} from "App.tsx"
+
+type Simple = {
+  name: string;
+};
+
+export const SimpleComponent = ({ name }: Simple): JSX.Element => {
+  console.log(name);
+
+  return <>{name}</>;
+};
