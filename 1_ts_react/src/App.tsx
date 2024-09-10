@@ -317,50 +317,81 @@
 // 3. TASK
 //////////////////////////////////////////////////////
 
-import { JSX } from "react";
+// import { JSX } from "react";
 
-export type Info = {
-  id: number;
-  title: string;
-  count: number;
-};
+// export type Info = {
+//   id: number;
+//   title: string;
+//   count: number;
+// };
 
-export const ParentComponent = (): JSX.Element => {
-  const name: string = "Kostya";
-  const items: string[] = ["dsfd", "gdfsfrtwe3"];
-  const info: Info = {
-    id: +crypto.randomUUID(),
-    title: "descr",
-    count: 11,
-  };
+// export const ParentComponent = (): JSX.Element => {
+//   const onClick = (text: string): void => console.log(text);
+//   const onDataReceived = (text: string): void => console.log(text);
 
-  return <SimpleComponent name={name} items={items} info={info} />;
-};
+//   const name: string = "Kostya";
+//   const items: string[] = ["first", "second", "third"];
+//   const info: Info = {
+//     id: +crypto.randomUUID(),
+//     title: "Кликни на меня и посмотри в консоль",
+//     count: 11,
+//   };
 
-// import {Info} from "App.tsx"
+//   return (
+//     <SimpleComponent
+//       name={name}
+//       items={items}
+//       info={info}
+//       onClick={onClick}
+//       onDataReceived={onDataReceived}
+//     />
+//   );
+// };
 
-type Simple = {
-  name: string;
-  items: string[];
-  info: Info;
-};
+// // import {Info} from "App.tsx"
 
-export const SimpleComponent = ({ name, items, info }: Simple): JSX.Element => {
-  return (
-    <div>
-      <p>{name}</p>
-      {items.map((item) => {
-        return (
-          <div>
-            <p>{item}</p>
-          </div>
-        );
-      })}
-      <p>{info.count}</p>
-      <p>{info.title}</p>
-    </div>
-  );
-};
+// type Simple = {
+//   name: string;
+//   items: string[];
+//   info: Info;
+//   onClick: (text: string) => void;
+//   onDataReceived: (text: string) => void;
+// };
+
+// export const SimpleComponent = ({
+//   name,
+//   items,
+//   info,
+//   onClick,
+//   onDataReceived,
+// }: Simple): JSX.Element => {
+//   const chlickHandler = () => onClick(`Привет React`);
+//   const clickReceived = (index: number) => {
+//     const item = items.filter((_, ind: number) => ind === index);
+//     onDataReceived(item[0]);
+//   };
+
+//   return (
+//     <div>
+//       <p>{name}</p>
+//       <p>{info.count}</p>
+//       <p onClick={() => chlickHandler()}>{info.title}</p>
+//       <p>----------------------</p>
+//       {items.map((item, index) => {
+//         return (
+//           <div
+//             key={crypto.randomUUID()}
+//             onClick={() => {
+//               clickReceived(index);
+//             }}
+//           >
+//             <p>{item}</p>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
 
 //////////////////////////////////////////////////////
 // 4. TASK
