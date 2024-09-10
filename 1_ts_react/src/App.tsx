@@ -246,22 +246,147 @@
 // 1. TASK
 //////////////////////////////////////////////////////
 
+// import { JSX } from "react";
+
+// export const ParentComponent = (): JSX.Element => {
+//   const name: string = "Kostya";
+
+//   return <SimpleComponent name={name} />;
+// };
+
+// // import {ParentComponent} from "App.tsx"
+
+// type Simple = {
+//   name: string;
+// };
+
+// export const SimpleComponent = ({ name }: Simple): JSX.Element => {
+//   return <>{name}</>;
+// };
+
+//////////////////////////////////////////////////////
+// 2. TASK
+//////////////////////////////////////////////////////
+
+// import { JSX } from "react";
+
+// export type Info = {
+//   id: number;
+//   title: string;
+//   count: number;
+// };
+
+// export const ParentComponent = (): JSX.Element => {
+//   const name: string = "Kostya";
+//   const items: string[] = ["dsfd", "gdfsfrtwe3"];
+//   const info: Info = {
+//     id: +crypto.randomUUID(),
+//     title: "descr",
+//     count: 11,
+//   };
+
+//   return <SimpleComponent name={name} items={items} info={info} />;
+// };
+
+// // import {Info} from "App.tsx"
+
+// type Simple = {
+//   name: string;
+//   items: string[];
+//   info: Info;
+// };
+
+// export const SimpleComponent = ({ name, items, info }: Simple): JSX.Element => {
+//   return (
+//     <div>
+//       <p>{name}</p>
+//       {items.map((item) => {
+//         return (
+//           <div>
+//             <p>{item}</p>
+//           </div>
+//         );
+//       })}
+//       <p>{info.count}</p>
+//       <p>{info.title}</p>
+//     </div>
+//   );
+// };
+
+//////////////////////////////////////////////////////
+// 3. TASK
+//////////////////////////////////////////////////////
+
 import { JSX } from "react";
+
+export type Info = {
+  id: number;
+  title: string;
+  count: number;
+};
 
 export const ParentComponent = (): JSX.Element => {
   const name: string = "Kostya";
+  const items: string[] = ["dsfd", "gdfsfrtwe3"];
+  const info: Info = {
+    id: +crypto.randomUUID(),
+    title: "descr",
+    count: 11,
+  };
 
-  return <SimpleComponent name={name} />;
+  return <SimpleComponent name={name} items={items} info={info} />;
 };
 
-// import {ParentComponent} from "App.tsx"
+// import {Info} from "App.tsx"
 
 type Simple = {
   name: string;
+  items: string[];
+  info: Info;
 };
 
-export const SimpleComponent = ({ name }: Simple): JSX.Element => {
-  console.log(name);
-
-  return <>{name}</>;
+export const SimpleComponent = ({ name, items, info }: Simple): JSX.Element => {
+  return (
+    <div>
+      <p>{name}</p>
+      {items.map((item) => {
+        return (
+          <div>
+            <p>{item}</p>
+          </div>
+        );
+      })}
+      <p>{info.count}</p>
+      <p>{info.title}</p>
+    </div>
+  );
 };
+
+//////////////////////////////////////////////////////
+// 4. TASK
+//////////////////////////////////////////////////////
+
+// export const ParentCmpnt = (): JSX.Element => {
+//   return (
+//     <SimpleCmpnt>
+//       <p>Text1</p>
+//       <p>Text2</p>
+//       <p>Text3</p>
+//       <div>
+//         <p>Text4</p>
+//         <p>Text5</p>
+//         <p>Text6</p>
+//       </div>
+//     </SimpleCmpnt>
+//   );
+// };
+
+// import { ReactNode } from "react";
+
+// type PropsTP = {
+//   children: ReactNode;
+// };
+
+// export const SimpleCmpnt = ({ children }: PropsTP): JSX.Element => {
+//   return <>{children}</>;
+// };

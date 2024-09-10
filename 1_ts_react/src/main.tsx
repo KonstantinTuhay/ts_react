@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ParentComponent } from "./App.tsx";
+import { ParentCmpnt } from "./App.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ParentComponent />
+    <ParentCmpnt />
   </StrictMode>
 );
